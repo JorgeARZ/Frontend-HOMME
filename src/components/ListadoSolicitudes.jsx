@@ -1,6 +1,5 @@
 import Solicitudes from './Solicitudes';
 import useHydrodynamic from '../hooks/useHidrodinamyc';
-import { render } from 'react-dom';
 
 
 const ListadoSolicitudes = () => {
@@ -8,27 +7,33 @@ const ListadoSolicitudes = () => {
       const {ViewDatos} = useHydrodynamic()
 
 
-
   return (
    <>
-
       {ViewDatos.length ? (
          <>
             <h2 className='font-black text-3xl text-center mt-24'>Si Hay Datos Hidrodinamicos</h2>
-            {Object.values(ViewDatos).map((data,index)=>(
-               console.log(data)
-               // <Solicitudes
-               //    key={index}
-               //    data={data}
-               // />
-            ))}
 
-  
+            {Object.keys(ViewDatos).map((data) =>{
+                const values = ViewDatos[data]
+                console.log(values)
+
+                return(
+                  <>
+                  {Object.keys(values).map((value,index) =>{
+                     const keys = values[value]
+                     console.log(keys[0])
+                  //   return <li key={keys}> asd{keys._id}</li>
+                  })}
+                 
+                  </>
+                )
+               
+            })}
+         
          </>
       ) :(
          <>
-            <h2 className='font-black text-3xl text-center'>No hay Datos hidrodinamicos</h2>
-         
+            <h2 className='font-black text-3xl text-center mt-24'>No hay Datos hidrodinamicos</h2> 
          </>
       )}
 

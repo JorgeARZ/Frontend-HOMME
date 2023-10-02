@@ -6,6 +6,8 @@ const HydrodynamicContext = createContext()
 
 export const HydrodynamicProvider = ({children}) =>{
 
+
+    //Datos formulario
     const  [datos,setDatos] = useState({
         fechaInicio: '',
         fechaTermino: '',
@@ -50,45 +52,45 @@ export const HydrodynamicProvider = ({children}) =>{
             //   ...data.getHeaders()
            },
             data : data
-
-          
          };
       
          axios.request(config)
         .then((response) => {
-          console.log(JSON.stringify(response.data));
+          setDatos(JSON.stringify(response.data));
          })
         .catch((error) => {
            console.log(error);
         });
      }
 
+    
+
      
      //Obtener Modelos Hidrodinamicos
-     useEffect(()=>{
-      
-      let data = new FormData();
-      const token = localStorage.getItem('token')
-      let config = {
-          method: 'get',
-          maxBodyLength: Infinity,
-          url: 'http://34.176.175.133:3000/users/requests',
-          headers: { 
-            'x-token': token, 
-          //   ...data.getHeaders()
-          },
-          data : data
-        };
-        
-        axios.request(config)
-        .then((response) => {
-          setViewDatos([response.data]);
-        })
-        .catch((error) => {
-          console.log(error);
-        });   
 
-     },[])
+       useEffect(()=>{
+
+        let data = new FormData();
+        const token = localStorage.getItem('token')
+        let config = {
+            method: 'get',  
+            maxBodyLength: Infinity,
+            url: 'http://34.176.175.133:3000/users/requests',
+            headers: { 
+              'x-token': token, 
+            //   ...data.getHeaders()
+            },
+            data : data
+          };
+          
+          axios.request(config)
+          .then((response) => {
+            setViewDatos([response.data]);
+          })
+          .catch((error) => {
+            console.log(error);
+          });  
+       },[])
 
     return(
         <HydrodynamicContext.Provider
@@ -99,13 +101,13 @@ export const HydrodynamicProvider = ({children}) =>{
                 error,
                 setError,
                 SubmitHydro,
-                ViewDatos
-
+                ViewDatos,
             }}
         
         >
             {children}
         </HydrodynamicContext.Provider>
+    
     )
 }
 

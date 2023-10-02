@@ -26,7 +26,6 @@ const Form = () => {
       //Submit Hidro Axios request Post formulario
         SubmitHydro([datos])
     }
-
   return (
     <>
     <div className='flex flex-col items-center justify-center px-5 lg:py-0'>
@@ -70,28 +69,28 @@ const Form = () => {
                           </div>
 
                         <div>
-                            <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User</label>
+                            <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">latitud norte</label>
                             <input type="text" name="latitudNorte" id="latitudNorte" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5" placeholder="latitudNorte" required="" 
                             value={datos.latitudNorte}
                             onChange={e => handleChangeDatos(e)}
                             />
                         </div>
                         <div>
-                            <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User</label>
+                            <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">latitud sur</label>
                             <input type="text" name="latitudSur" id="latitudSur" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5" placeholder="latitudSur" required="" 
                             value={datos.latitudSur}
                             onChange={e => handleChangeDatos(e)}
                             />
-                            </div>
-                                           <div>
-                            <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User</label>
-                            <input type="text" name="longitudOriente" id="longitudOriente" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5" placeholder="longitudOriente" required="" 
+                        </div>
+                        <div>
+                            <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">longitud oriente</label>
+                            <input type="text" name="longitudOriente" id="longitudOriente" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5" placeholder="longitudOriente" required=""  
                             value={datos.longitudOriente}
                             onChange={e => handleChangeDatos(e)}
                             />
                             </div>
                                            <div>
-                            <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User</label>
+                            <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">longitud poniente</label>
                             <input type="text" name="longitudPoniente" id="longitudPoniente" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5" placeholder="longitudPoniente" required="" 
                             value={datos.longitudPoniente}
                             onChange={e =>handleChangeDatos(e)}
@@ -99,7 +98,7 @@ const Form = () => {
                         </div>
 
                         <div>
-                            <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User</label>
+                            <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">emergencia</label>
                             <input type="text" name="local" id="local" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5" placeholder="local" required="" 
                             value={datos.local}
                             onChange={e => handleChangeDatos(e)}

@@ -1,0 +1,80 @@
+import axios from "axios"
+import FormData from "form-data"
+import { useState } from "react"
+
+const ShowGrid = () => {
+
+    const [idGrid,setidGrid] = useState('')
+
+    //Guardar Solicitud en state
+    const [gridId,setgridId] = useState([])
+
+    const SubmitGrid = e =>{
+        e.preventDefault()
+
+        let data = new FormData();
+        data.append('IDSolicitud', idGrid);
+        const token = localStorage.getItem('token')
+
+        let config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'http://34.176.175.133:3000/requests/grid',
+        headers: { 
+            'x-token': token, 
+            // ...data.getHeaders()
+        },
+        data : data
+        };
+
+        axios.request(config)
+        .then((response) => {
+            setgridId(response.data);
+        })
+        .catch((error) => {
+        console.log(error);
+        });
+    }
+    
+
+
+  return (
+    <form className='mt-5' onSubmit={SubmitGrid}>
+        <div>
+            <h1 className='font-black text-4xl text-center mb-5 capitalize'>show grid</h1>
+        </div>
+        <div className="text-center">
+            <label htmlFor="" className='text-xl font-medium mr-3 capitalize'>ingrese iD grilla</label>
+            <input type="text"  value={idGrid} onChange={e=>setidGrid(e.target.value)} className="border border-black" />
+            <input type="submit" name="" className='text-white bg-red-800 hover:text-black font-medium ml-3 p-1 rounded-md px-5 capitalize'/>
+        </div>
+
+        <div className="bg-white mt-5 sm:w-full xl:px-12">
+        <div className="overflow-x-auto boder-x border-t">
+        <table className="table-auto w-full mt-3">
+            <thead className="border-b">
+                <tr className="bg-red-900 text-white">
+                    <th className="p-4 font-medium">Respuesta</th>
+                    <th className="p-4 font-medium">fecha de peticion</th>
+                    <th className=" p-4 font-medium">tiempo estimado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr className="border-b text-center">
+                    <td className="p-4 ">{gridId.message}</td>
+                    <td className="p-4">{gridId.fechaPeticion}</td>
+                    <td className="p-4">{gridId.TiempoEstimado}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        </div>
+    </form>
+
+
+    
+  )
+}
+
+export default ShowGrid

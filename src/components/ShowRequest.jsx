@@ -53,10 +53,10 @@ const ShowRequest = () => {
                   <th className="text-left p-4 font-bold">
                      Respuesta
                   </th>
-                  <th className="text-left p-4 font-medium">
+                  <th className="text-left p-4 font-bold">
                     Hora Ingreso
                   </th>
-                  <th className="text-left p-4 font-medium">
+                  <th className="text-left p-4 font-bold">
                     Modelo Hidrodinamico
                   </th>
                   <th>Batimetria</th>

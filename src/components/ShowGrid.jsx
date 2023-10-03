@@ -51,17 +51,17 @@ const ShowGrid = () => {
 
         <div className="bg-white mt-5 sm:w-full xl:px-12">
         <div className="overflow-x-auto boder-x border-t">
-        <table className="table-auto w-full mt-3">
+        <table className="table-auto w-full">
             <thead className="border-b">
-                <tr className="bg-red-900 text-white">
-                    <th className="p-4 font-medium">Respuesta</th>
-                    <th className="p-4 font-medium">fecha de peticion</th>
-                    <th className=" p-4 font-medium">tiempo estimado</th>
+                <tr className="bg-red-900 text-white capitalize">
+                    <th className="p-4 font-bold">respuesta</th>
+                    <th className="p-4 font-bold">fecha de peticion</th>
+                    <th className=" p-4 font-bold">tiempo estimado</th>
                 </tr>
             </thead>
             <tbody>
                 <tr className="border-b text-center">
-                    <td className="p-4 ">{gridId.message}</td>
+                    <td className="p-4">{gridId.message}</td>
                     <td className="p-4">{gridId.fechaPeticion}</td>
                     <td className="p-4">{gridId.TiempoEstimado}</td>
                     <td></td>

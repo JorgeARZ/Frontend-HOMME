@@ -3,7 +3,6 @@ import { useState, useEffect, useRef } from "react";
 import mapboxgl from 'mapbox-gl';
 
 function Mapbox(data) {
-    // console.log(data,'12321')
     //Assign the Mapbox token from the environment variable set in .env
     mapboxgl.accessToken = "pk.eyJ1Ijoiam9yZ2VhcnoiLCJhIjoiY2xoeHJuY2hwMHJteTNnbjBqcWN5bzU1ZCJ9.gsehy9Q8trkM71y3tU0RWg";
 
@@ -313,5 +312,4 @@ function Mapbox(data) {
         </div>
     );
 }
-
 export default Mapbox;

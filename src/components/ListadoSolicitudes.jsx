@@ -1,34 +1,44 @@
-import Solicitudes from './Solicitudes';
 import useHydrodynamic from '../hooks/useHidrodinamyc';
 
 
 const ListadoSolicitudes = () => {
 
       const {ViewDatos} = useHydrodynamic()
-
+      console.log(ViewDatos)
 
   return (
    <>
       {ViewDatos.length ? (
          <>
             <h2 className='font-black text-3xl text-center mt-24'>Si Hay Datos Hidrodinamicos</h2>
-
-            {Object.keys(ViewDatos).map((data) =>{
-                const values = ViewDatos[data]
-                console.log(values)
-
-                return(
+            {/* {ViewDatos.map((value)=>{
+               const datos =value.data
+               console.log(datos)
+               return(
                   <>
-                  {Object.keys(values).map((value,index) =>{
-                     const keys = values[value]
-                     console.log(keys[0])
-                  //   return <li key={keys}> asd{keys._id}</li>
-                  })}
-                 
+                     <li>{datos.user}</li>
                   </>
-                )
+               )
+            })} */}
+
+
+            
+
+
+
+            {/* {Object.values(ViewDatos).map((data) =>{
+               const values = data.data
+               console.log(values)
+               return(
+                  <>
+                  {values.map((datos)=>{
+                     <li key={datos.data}>asd{datos._id}</li>
+                  })}
+                  </>
+                  
+               )
                
-            })}
+            })} */}
          
          </>
       ) :(

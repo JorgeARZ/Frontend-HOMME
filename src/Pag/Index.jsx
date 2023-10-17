@@ -8,13 +8,9 @@ import ShowBathy from "../components/ShowBathy"
 import Mapbox from "../components/Mapbox"
 
 
-import { useState } from "react"
-
 const Index = () => {
 
 
-const [longitud, setLongitud] = useState(-71.5956);
-const [latitud, setLatitud] = useState(-33.0247);
 
 
 
@@ -31,7 +27,7 @@ const [latitud, setLatitud] = useState(-33.0247);
       <div className=' md:block  md:w-1/2 lg:w-1/3'>
         <Formulario/>
        </div> 
-      <Mapbox latitud={latitud} longitud={longitud} /> 
+      <Mapbox/> 
     </div>
     <ListadoSolicitudes/>
     <div className="mt-24">

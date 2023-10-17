@@ -85,7 +85,8 @@ export const HydrodynamicProvider = ({children}) =>{
           
           axios.request(config)
           .then((response) => {
-            setViewDatos([response.data]);
+            setViewDatos(JSON.stringify(response.data));
+            // setViewDatos([response.data]);
           })
           .catch((error) => {
             console.log(error);
@@ -93,6 +94,7 @@ export const HydrodynamicProvider = ({children}) =>{
        },[])
 
     return(
+      <>
         <HydrodynamicContext.Provider
             value={{
                 handleChangeDatos,  
@@ -107,7 +109,7 @@ export const HydrodynamicProvider = ({children}) =>{
         >
             {children}
         </HydrodynamicContext.Provider>
-    
+        </>
     )
 }
 

@@ -5,20 +5,11 @@ import ListadoSolicitudes from "../components/ListadoSolicitudes"
 import ShowRequest from "../components/ShowRequest"
 import ShowGrid from "../components/ShowGrid"
 import ShowBathy from "../components/ShowBathy"
+import ShowMdp from "../components/ShowMdp"
 import Mapbox from "../components/Mapbox"
 
 
 const Index = () => {
-
-
-
-
-
-//Agregar longitud latitud de forma de muestra para identificar
-//  cuadrante maximo 6° (para todo los lados)
-//como definir el punto central (click lo mas ideal)
-
-
   return (
     <>
 
@@ -27,11 +18,15 @@ const Index = () => {
       <div className=' md:block  md:w-1/2 lg:w-1/3'>
         <Formulario/>
        </div> 
-      <Mapbox/> 
+        <Mapbox/> 
     </div>
     <ListadoSolicitudes/>
+    <div className="mb-6 mt-12 items-center"><ShowMdp/></div>
+      
     <div className="mt-24">
+
       <ShowRequest/>
+
     </div>
     <ShowGrid/>
     <ShowBathy/>

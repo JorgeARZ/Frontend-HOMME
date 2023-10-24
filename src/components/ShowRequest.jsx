@@ -4,13 +4,12 @@ import axios from "axios"
 
 const ShowRequest = () => {
 
-  const [idSolicitud,setidSolicitud] = useState('')
   const [ShowId,setShowId] = useState([])
+  const [idSolicitud,setidSolicitud] = useState('')
+
 
     const Submit = e =>{
         e.preventDefault()
-
-
         const token = localStorage.getItem('token')
         let data = new FormData();
         data.append('IDSolicitud',idSolicitud);
@@ -28,12 +27,13 @@ const ShowRequest = () => {
 
         axios.request(config)
         .then((response) => {
-        setShowId((response.data));
+        setShowId(response.data);
         })
         .catch((error) => {
         console.log(error);
         });
-         
+
+
     }
   return (
     <form onSubmit={Submit}>

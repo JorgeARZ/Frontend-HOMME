@@ -4,42 +4,63 @@ import useHydrodynamic from '../hooks/useHidrodinamyc';
 const ListadoSolicitudes = () => {
 
       const {ViewDatos} = useHydrodynamic()
-      console.log(ViewDatos)
-
+          const resultados = []
+          {ViewDatos.forEach((employee)=>{
+            employee.data.forEach((datos)=>{ 
+                resultados.push(
+                  <>
+                  <tbody>
+                  <tr className="border-b text-center">
+                     <th className="p-4 font-bold">{datos._id}</th>
+                     <th className="p-4 font-bold">{datos.fechaInicio}</th>
+                     <th className="p-4 font-bold">{datos.fechaTermino}</th>
+                     <th className="p-4 font-bold">{datos.fechaPeticion}</th>
+                     <th className="p-4 font-bold">{datos.latitudNorte}</th>
+                     <th className="p-4 font-bold">{datos.latitudSur}</th>
+                     <th className="p-4 font-bold">{datos.longitudOriente}</th>
+                     <th className="p-4 font-bold">{datos.longitudPoniente}</th>
+                     <th className="p-4 font-bold">{datos.modelType}</th>
+                     <th className="p-4 font-bold">{datos.tiempoEstimado}</th>
+                     <th className="p-4 font-bold">{datos.requestStatus}</th>
+                  </tr>
+                  </tbody>
+                  </>
+               )
+            })
+           
+    })} 
   return (
+   
+
+   
    <>
       {ViewDatos.length ? (
          <>
-            <h2 className='font-black text-3xl text-center mt-24'>Si Hay Datos Hidrodinamicos</h2>
-            {/* {ViewDatos.map((value)=>{
-               const datos =value.data
-               console.log(datos)
+         <h2 className='font-black text-3xl text-center mt-24'>Si Hay Datos Hidrodinamicos</h2>
+
+{/* 
+         {ViewDatos.map((data)=>{
+            {data.data.map((valor)=>{
                return(
-                  <>
-                     <li>{datos.user}</li>
-                  </>
+                  <div key={valor._id}>
+                     <li>{valor.user}</li>
+                  </div>
                )
-            })} */}
-
-
-            
+            })}
+         })} */}
 
 
 
-            {/* {Object.values(ViewDatos).map((data) =>{
-               const values = data.data
-               console.log(values)
-               return(
-                  <>
-                  {values.map((datos)=>{
-                     <li key={datos.data}>asd{datos._id}</li>
-                  })}
-                  </>
-                  
-               )
-               
-            })} */}
-         
+         <div className='mt-5'>
+            <div>
+               <table className="table-auto w-full">
+               <thead>
+               </thead>
+               {resultados}
+               </table>
+            </div>
+         </div>
+   
          </>
       ) :(
          <>
@@ -47,56 +68,6 @@ const ListadoSolicitudes = () => {
          </>
       )}
 
-      
-
-
-
-
-
-      {/* <div className="bg-white mt-5 sm:w-full xl:px-12"> 
-      <div className="overflow-x-auto border-x border-t">
-         <table className="table-auto w-full">
-            <thead className="border-b">
-               <tr className="bg-red-900 text-white">
-                  <th className="text-left p-4 font-bold">
-                     
-                  </th>
-                  <th className="text-left p-4 font-medium">
-                  </th>
-                  <th className="text-left p-4 font-medium">
- 
-                  </th>
-               </tr>
-            </thead>
-            <tbody>
-               <tr className="border-b hover:bg-gray-50">
-                  <td className="p-4">
-
-                  </td>
-                  <td className="p-4">
-                     2:30min
-                  </td>
-                  <td className="p-4">
-                     XXXXXXX
-                  </td>
-               </tr>
-               <tr className="border-b hover:bg-gray-50">
-                  <td className="p-4">
-                     483290435
-                  </td>
-                  <td className="p-4">
-                     1:20min
-                  </td>
-                  <td className="p-4">
-                     XXXXXXX
-                  </td>
-                  
-               </tr>
-            </tbody>
-         </table>
-      </div>
-      </div> */}
-   {/* })} */}
    </>
     
   )

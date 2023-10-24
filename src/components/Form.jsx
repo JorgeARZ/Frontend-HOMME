@@ -1,9 +1,7 @@
-import axios from 'axios';
-import FormData from 'form-data'
-import { useState } from "react";
-import DatePicker,{DateObject} from "react-multi-date-picker"
-import TimePicker from "react-multi-date-picker/plugins/time_picker";
-import "react-datepicker/dist/react-datepicker.css";
+
+// import DatePicker,{DateObject} from "react-multi-date-picker"
+// import TimePicker from "react-multi-date-picker/plugins/time_picker";
+// import "react-datepicker/dist/react-datepicker.css";
 import useHydrodynamic from '../hooks/useHidrodinamyc';
 // import Alerta from './Alerta';
 
@@ -14,7 +12,6 @@ const Form = () => {
 
     //EXTRAYENDO DATOS DEL CONTEXT HYDRODINAMY
     const {handleChangeDatos,datos,SubmitHydro} = useHydrodynamic()
-  
 
      const EnviarDatos = e =>{
       e.preventDefault()
@@ -24,7 +21,7 @@ const Form = () => {
         return
     }   
       //Submit Hidro Axios request Post formulario
-        SubmitHydro([datos])
+        SubmitHydro(datos)
     }
   return (
     <>
@@ -34,25 +31,6 @@ const Form = () => {
           <form onSubmit={EnviarDatos}>
 
             <h1 className="text-white font-bold text-xl text-center capitalize">modelo hidrodinamico</h1>
-
-                {/* <DatePicker   
-                    value={datos.fechaInicio}
-                    onOpen={() => setDatos(new DateObject().toUTC())}
-                    onChange={e => handleChangeDatos(e)}
-                    format="YYYY-MM-DD HH:MM:ss"
-                    placeholder="please select date"
-                    plugins={[<TimePicker position="right" hideSeconds header={false} />]}
-                    name='fechaInicio'
-                  />
-                  <DatePicker
-                    value={datos.fechaInicio}
-                    onOpen={() => setDatos(new DateObject().toUTC())}
-                    onChange={e => handleChangeDatos(e)}
-                    format="YYYY-MM-DD HH:MM:ss"
-                    placeholder="please select date"
-                    plugins={[<TimePicker position="right" hideSeconds header={false} />]}
-                    name='fechaTermino'
-                  /> */}
                         <div>
                                 <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white capitalize">fecha Inicio</label>
                                 <input type="date" placeholder='Fecha Inicio' className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
@@ -99,8 +77,8 @@ const Form = () => {
 
                         <div>
                             <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">emergencia</label>
-                            <input type="text" name="local" id="local" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5" placeholder="local" required="" 
-                            value={datos.local}
+                            <input type="text" name="emergencia" id="emergencia" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5" placeholder="emergencia" required="" 
+                            value={datos.emergencia}
                             onChange={e => handleChangeDatos(e)}
                             />
                         </div>

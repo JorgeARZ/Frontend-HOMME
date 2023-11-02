@@ -6,6 +6,7 @@ import Login from "./Pag/Login"
 import Registrar  from "./Pag/Registrar"
 import Index from './Pag/Index'
 import Inicio from './Pag/Inicio'
+import Mdp from "./Pag/Mdp"
 
 
 import { HydrodynamicProvider } from "./context/HydrodynamicProvider"
@@ -27,6 +28,7 @@ function App() {
             {/* Area Privada */}
          <Route element={<RutaProtegida/>}>
               <Route path="/index" element={<Index/>}/>
+              <Route path="/Mdp" element={<Mdp/>}/>
          </Route>
       </Routes>
       </HydrodynamicProvider>

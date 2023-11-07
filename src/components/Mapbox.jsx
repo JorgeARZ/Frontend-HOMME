@@ -3409,7 +3409,7 @@ function Mapbox() {
                 map.current.addSource('earthquakes', {
                 type: 'geojson',
                 // Use a URL for the value for the `data` property.
-                data: geojson
+                data: geojson3
                 });
                  
                     map.current.addLayer({

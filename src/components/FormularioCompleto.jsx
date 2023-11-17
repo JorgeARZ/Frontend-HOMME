@@ -1,9 +1,12 @@
 import useHydrodynamic from '../hooks/useHidrodinamyc';
+import { useEffect } from 'react';
 
 
 const FormularioCompleto = () => {
 
   const {SubmitMDP,handleMDP,datosMdp} = useHydrodynamic()
+
+
 
 
   const FormMDP = e =>{
@@ -201,13 +204,14 @@ const FormularioCompleto = () => {
 
           <label htmlFor="" className="block mb-1 text-m font-normal text-white capitalize mt-5">analisisDirecto</label>
 
-          <input type="radio" name="analisisDirectoo" id="analisisDirecto" className="block w-full mt-2 "
+          <input type="radio" name="analisisDirecto" id="analisisDirecto" className="block w-full mt-2 "
                             value='true'
                             onChange={e => handleMDP(e)} 
                             checked={datosMdp.analisisDirecto ==='true'}
-                            placeholder='analisis Leeway'
+                            placeholder='analisis Directo'
                         
                             />
+
           
                     
           <label htmlFor="" className="block mb-1 text-m font-normal text-white capitalize mt-3">SDxy</label>

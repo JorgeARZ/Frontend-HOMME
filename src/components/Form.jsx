@@ -1,13 +1,17 @@
 import useHydrodynamic from '../hooks/useHidrodinamyc';
 import Alerta from './Alerta';
-import {Link,Navigate} from 'react-router-dom'
+import { useEffect } from 'react';
 
 
 const Form = () => {
 
 
     //EXTRAYENDO DATOS DEL CONTEXT HYDRODINAMY
-    const {handleChangeDatos,datos,SubmitHydro,alerta,setAlerta} = useHydrodynamic()
+    const {handleChangeDatos,datos,SubmitHydro,alerta,setAlerta,dat,setDatos} = useHydrodynamic()
+
+    useEffect(()=>{
+      console.log(dat)
+    },[dat])
 
 
      const EnviarDatos = e =>{

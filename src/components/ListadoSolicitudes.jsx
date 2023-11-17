@@ -1,18 +1,24 @@
 import useHydrodynamic from '../hooks/useHidrodinamyc';
 
-
 const ListadoSolicitudes = () => {
 
-      const {ViewDatos} = useHydrodynamic()
+
+      const {ViewDatos,setDat} = useHydrodynamic()
+
+
+
+
       
           const resultados = []
+          
           {ViewDatos.forEach((employee)=>{
             employee.data.forEach((datos)=>{ 
                 resultados.push(
                   <>
-                  <tbody>
+
+                  <tbody>   
                   <tr className="border-b text-center">
-                     <th className="p-4 font-bold">{datos._id}</th>
+                     <th className="p-4 font-bold" >{datos._id}</th>
                      <th className="p-4 font-bold">{datos.fechaInicio}</th>
                      <th className="p-4 font-bold">{datos.fechaTermino}</th>
                      <th className="p-4 font-bold">{datos.fechaPeticion}</th>
@@ -24,8 +30,10 @@ const ListadoSolicitudes = () => {
                      <th className="p-4 font-bold">{datos.tiempoEstimado}</th>
                      <th className="p-4 font-bold">{datos.requestStatus}</th>
                      <th className="p-4 font-bold">{datos.emergencia}</th>
+                     <button onClick={()=>setDat(datos)} className='p-4 font-bold'>Editar</button>
                   </tr>
                   </tbody>
+                  
                   </>
                )
             })

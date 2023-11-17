@@ -8,7 +8,38 @@ const HydrodynamicContext = createContext()
 export const HydrodynamicProvider = ({children}) =>{
 
   const [ViewDatos,setViewDatos] = useState([])
+  
+  const [dat,setDat] =useState({})
+
+
   const [alerta,setAlerta] = useState({})
+
+    //Obtener Modelos Hidrodinamicos/MDP
+    useEffect(()=>{
+
+      let data = new FormData();
+      const token = localStorage.getItem('token')
+      let config = {
+          method: 'get',  
+          maxBodyLength: Infinity,
+          url: 'http://34.176.175.133:3000/users/requests',
+          headers: { 
+            'x-token': token, 
+          //   ...data.getHeaders()
+          },
+          data : data
+        };
+        
+        axios.request(config)
+        .then((response) => {
+          // setViewDatos(JSON.stringify(response.data));
+          setViewDatos([response.data]);
+        })
+        .catch((error) => {
+          console.log(error);
+        });  
+    },[])
+
 
         //Datos formulario HIDRODINAMICO
         const  [datos,setDatos] = useState({
@@ -25,10 +56,10 @@ export const HydrodynamicProvider = ({children}) =>{
             IDSolicitud:'',
             fechaInicio: new Date(Date.UTC()),
             fechaTermino: new Date(Date.UTC()),
-            latitudNorte:datos.latitudNorte,
-            latitudSur:datos.latitudSur,
-            longitudOriente:datos.longitudOriente,
-            longitudPoniente:datos.longitudPoniente,
+            latitudNorte:'',
+            latitudSur:'',
+            longitudOriente:'',
+            longitudPoniente:'',
             emergencia:false,
             multViento:'',
             multCorriente:'',
@@ -101,9 +132,6 @@ export const HydrodynamicProvider = ({children}) =>{
             });
         }
 
-      
-
-
         // Submit Formulario MDP
         const SubmitMDP = () =>{
 
@@ -160,32 +188,10 @@ export const HydrodynamicProvider = ({children}) =>{
 
         }
 
-          //Obtener Modelos Hidrodinamicos/MDP
-          useEffect(()=>{
+        //Recolectar datos al MDP via ID
+        
 
-            let data = new FormData();
-            const token = localStorage.getItem('token')
-            let config = {
-                method: 'get',  
-                maxBodyLength: Infinity,
-                url: 'http://34.176.175.133:3000/users/requests',
-                headers: { 
-                  'x-token': token, 
-                //   ...data.getHeaders()
-                },
-                data : data
-              };
-              
-              axios.request(config)
-              .then((response) => {
-                // setViewDatos(JSON.stringify(response.data));
-                setViewDatos([response.data]);
-              })
-              .catch((error) => {
-                console.log(error);
-              });  
-          },[])
-
+     
     return(
       <>
         <HydrodynamicContext.Provider
@@ -199,7 +205,10 @@ export const HydrodynamicProvider = ({children}) =>{
                 setAlerta,
                 SubmitMDP,
                 handleMDP,
-                datosMdp
+                datosMdp,
+                dat,
+                setDatosMdp,
+                setDat
             }}
         
         >

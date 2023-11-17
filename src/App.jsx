@@ -5,7 +5,6 @@ import RutaProtegida from "./layout/RutaProtegida"
 import Login from "./Pag/Login"
 import Registrar  from "./Pag/Registrar"
 import Index from './Pag/Index'
-import Inicio from './Pag/Inicio'
 import Mdp from "./Pag/Mdp"
 
 
@@ -21,8 +20,8 @@ function App() {
       <Routes>
          {/* Area Publica */}
         <Route path="/" element={<AuthLayout/>}>
-          <Route  index  element= {<Inicio/>}/>
-          <Route  path='login' element= {<Login/>}/>
+          {/* <Route  index  element= {<Inicio/>}/> */}
+          <Route  index  element= {<Login/>}/>
           <Route path="registrar" element={<Registrar/>}/>
         </Route>
             {/* Area Privada */}

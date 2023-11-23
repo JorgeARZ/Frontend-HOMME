@@ -6,7 +6,7 @@ import ShowRequest from "../components/ShowRequest"
 import ShowGrid from "../components/ShowGrid"
 import ShowBathy from "../components/ShowBathy"
 import ShowMdp from "../components/ShowMdp"
-import Mapbox from "../components/Mapbox"
+import Mapbox from "../components/Mapboox"
 
 
 

@@ -1,11 +1,13 @@
-import axios from 'axios';
+
 import { useState } from 'react';
+import useHydrodynamic from '../hooks/useHidrodinamyc';
+import axiosRequest from '../config/axiosRequest';
 
 
 const ShowMdp = () => {
 
     const [getID,setgetID] = useState('')
-    const [mdpDatos,setMdpDatos] = useState([])
+    const {setMdpGeojson} = useHydrodynamic()
 
     const MDP = e =>{
         e.preventDefault()
@@ -17,7 +19,7 @@ const ShowMdp = () => {
             let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: 'http://34.176.175.133:3000/requests/mdpp',
+            url: '/mdpp',
             headers: { 
                 'x-token': token, 
                 // ...data.getHeaders()
@@ -25,19 +27,15 @@ const ShowMdp = () => {
                 data : data
             };
 
-            axios.request(config)
+            axiosRequest.request(config)
             .then((response) => {
-                setMdpDatos([response.data]);
+                setMdpGeojson(response.data);
             })
             .catch((error) => {
             console.log(error);
             });
     }
 
-     const resultados = []
-     {mdpDatos.forEach((mdp)=>{
-        console.log(mdp)
-     })}
 
 
             return (
@@ -50,9 +48,6 @@ const ShowMdp = () => {
                         <input type="submit" value="enviar" className="text-white bg-red-800 hover:text-black font-medium ml-3 p-1 rounded-md px-5 capitalize mt-2" />
                     </div>
                 </div>
-
-                {resultados}
-            
                </form>
             )
             }

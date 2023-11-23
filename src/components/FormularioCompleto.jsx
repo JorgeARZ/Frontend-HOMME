@@ -1,30 +1,60 @@
 import useHydrodynamic from '../hooks/useHidrodinamyc';
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
+import Alerta from './Alerta';
 
 
 const FormularioCompleto = () => {
 
-  const {SubmitMDP,handleMDP,datosMdp} = useHydrodynamic()
+  const {SubmitMDP,handleMDP,datosMdp,dat,setDatosMdp} = useHydrodynamic()
+
+  const [alerta,setAlerta] = useState({})
+  useEffect(()=>{
+    if(dat?._id){
+      setDatosMdp({
+        fechaInicio:dat.fechaInicio, //FALTA
+        fechaTermino:dat.fechaTermino, //FALTA
+        latitudNorte:dat.latitudNorte,
+        latitudSur:dat.latitudSur,
+        longitudOriente:dat.longitudOriente,
+        longitudPoniente:dat.longitudPoniente,
+        emergencia:dat.emergencia       //FALTA
+ 
+     })
+
+    }
+   
+   },[dat])
 
 
-
-
+ 
   const FormMDP = e =>{
     e.preventDefault()
 
+
     if(Object.values(datosMdp).includes('')){
-      console.log('Hay Campos Vacios')
-      return
-  }   
-  SubmitMDP(datosMdp)
+      setAlerta({msg: 'Hay Campos Vacios',error:true })
+      return;
+    }   
+    SubmitMDP(datosMdp)
+
+    setAlerta({ msg:'Solicitud Enviada'})
+    setDatosMdp('')
 
   }
+
+
+
+  const {msg} = alerta
   return (
     <>
     
       <div className="px-6 space-y-4 md:space-y-6 sm:p-8 bg-red-900 rounded-lg mx-3">
       <form onSubmit={FormMDP}>
           <h1 className="text-white font-bold text-xl text-center capitalize">modelo de deriva de particulas(MDP)</h1>
+
+          {msg &&<Alerta
+              alerta={alerta}
+            />}
 
           {/* GRUPOOOO 1 */}
       <div className="grid grid-cols-2 mt-4 bg ">

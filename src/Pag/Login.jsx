@@ -1,25 +1,23 @@
 import {useState} from 'react'
 import {Link,useNavigate} from 'react-router-dom'
-import clienteAxios from '../config/axios'
 import Alerta from '../components/Alerta'
-// import useAuth from '../hooks/useAuth'
+import axiosUsers from '../config/axios'
 
+
+///REALIZAR CAMBIOOOOOOOOOS PENDIENTES !!! LOGIN PROVIDER CONTEXT INDEPENDIENTE
 
 
 const Login = () => {
 
+  // const {login,handleLogin,submitLogin} = useLoginRegister()
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
+
   const [alerta,setAlerta] = useState('')
   const navigate=useNavigate()
 
-  // const {setAuth} =useAuth()
-
-
-
   const handleSubmit = async (e) =>{
     e.preventDefault()
-    
     if([email,password].includes('')){
       setAlerta({
         msg:'Todos los campos son obligatorios',
@@ -35,9 +33,9 @@ const Login = () => {
   
 
    try{
-    const {data} = await clienteAxios({
+    const {data} = await axiosUsers({
       method:'post',
-      url:'http://34.176.175.133:3000/users/login',
+      url:'/login',
       data:login,
       headers:{
         "Content-Type" : "multipart/"
@@ -45,7 +43,6 @@ const Login = () => {
     })
       localStorage.setItem('token',data.token)
       localStorage.setItem('name',data.name)
-      // setAuth(data)
     navigate('/index')
    }catch(error){
     setAlerta({
@@ -53,7 +50,6 @@ const Login = () => {
       error:true
     })
    }
-
 
   }
   const {msg} = alerta
@@ -79,13 +75,14 @@ const Login = () => {
                 <div>
                   <label htmlFor="email" className='block mb-2 text-m font-medium text-white'>Email</label>
                   <input type="text" className='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5' placeholder="name@company.com" required=""
+                  name="email"
                   value={email}
                   onChange={e => setEmail(e.target.value)} />
                 </div>
                 <div>
                       <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                       <input type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5" required=""   
-                      value={password}
+                      value={password} 
                       onChange={e => setPassword(e.target.value)}/>
                   </div>
 

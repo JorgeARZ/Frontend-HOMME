@@ -1,4 +1,4 @@
-import axios from "axios"
+import axiosRequest from "../config/axiosRequest"
 import FormData from "form-data"
 import { useState } from "react"
 
@@ -19,7 +19,7 @@ const ShowGrid = () => {
         let config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: 'http://34.176.175.133:3000/requests/grid',
+        url: '/grid',
         headers: { 
             'x-token': token, 
             // ...data.getHeaders()
@@ -27,7 +27,7 @@ const ShowGrid = () => {
         data : data
         };
 
-        axios.request(config)
+        axiosRequest.request(config)
         .then((response) => {
             setgridId(response.data);
         })

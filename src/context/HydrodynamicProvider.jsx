@@ -1,6 +1,7 @@
 import { createContext,useState,useEffect, children } from "react";
-import axios from "axios";
 import FormData from "form-data";
+import axiosUsers from "../config/axios";
+import axiosModeling from "../config/axiosModeling";
 // import Alerta from "../components/Alerta";
 
 const HydrodynamicContext = createContext()
@@ -10,9 +11,11 @@ export const HydrodynamicProvider = ({children}) =>{
   const [ViewDatos,setViewDatos] = useState([])
   
   const [dat,setDat] =useState({})
+  const [mdpGeojson,setMdpGeojson] = useState({})
 
 
-  const [alerta,setAlerta] = useState({})
+
+
 
     //Obtener Modelos Hidrodinamicos/MDP
     useEffect(()=>{
@@ -22,15 +25,15 @@ export const HydrodynamicProvider = ({children}) =>{
       let config = {
           method: 'get',  
           maxBodyLength: Infinity,
-          url: 'http://34.176.175.133:3000/users/requests',
+          url: '/requests',
           headers: { 
-            'x-token': token, 
+            'x-token': token,   
           //   ...data.getHeaders()
           },
           data : data
         };
         
-        axios.request(config)
+        axiosUsers.request(config)
         .then((response) => {
           // setViewDatos(JSON.stringify(response.data));
           setViewDatos([response.data]);
@@ -115,7 +118,7 @@ export const HydrodynamicProvider = ({children}) =>{
           let config = {
             method: 'post',
               maxBodyLength: Infinity,
-              url: 'http://34.176.175.133:3000/modeling/hidrodinamic',
+              url: '/hidrodinamic',
               headers: { 
                 'x-token': token, 
                 //   ...data.getHeaders()
@@ -123,7 +126,7 @@ export const HydrodynamicProvider = ({children}) =>{
                 data : data
             };
           
-            axios.request(config)
+            axiosModeling.request(config)
             .then((response) => {
               setDatos(response.data);
             })
@@ -170,7 +173,7 @@ export const HydrodynamicProvider = ({children}) =>{
           let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: 'http://34.176.175.133:3000/modeling/mdpp',
+            url: '/mdpp',
             headers: { 
               'x-token':token, 
               // ...data.getHeaders()
@@ -178,9 +181,9 @@ export const HydrodynamicProvider = ({children}) =>{
             data : data
           };
   
-          axios.request(config)
+          axiosModeling.request(config)
           .then((response) => {
-            console.log(response.data);
+            setDatosMdp(response.data);
           })
           .catch((error) => {
             console.log(error);
@@ -188,10 +191,8 @@ export const HydrodynamicProvider = ({children}) =>{
 
         }
 
-        //Recolectar datos al MDP via ID
-        
+        //Obtener MDP GeoJson
 
-     
     return(
       <>
         <HydrodynamicContext.Provider
@@ -201,14 +202,12 @@ export const HydrodynamicProvider = ({children}) =>{
                 setDatos,
                 SubmitHydro,
                 ViewDatos,
-                alerta,
-                setAlerta,
                 SubmitMDP,
                 handleMDP,
                 datosMdp,
                 dat,
                 setDatosMdp,
-                setDat
+                setDat,setMdpGeojson,mdpGeojson
             }}
         
         >

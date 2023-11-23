@@ -1,4 +1,4 @@
-import axios from "axios"
+import axiosRequest from "../config/axiosRequest"
 import FormData from "form-data"
 import { useState } from "react"
 const ShowBathy = () => {
@@ -18,7 +18,7 @@ const ShowBathy = () => {
         let config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: 'http://34.176.175.133:3000/requests/bathymetry',
+        url: '/bathymetry',
         headers: { 
             'x-token': token, 
             // ...data.getHeaders()
@@ -26,7 +26,7 @@ const ShowBathy = () => {
         data : data
         };
 
-        axios.request(config)
+        axiosRequest.request(config)
         .then((response) => {
             setshowBathy(response.data);
         })

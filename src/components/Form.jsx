@@ -1,17 +1,15 @@
 import useHydrodynamic from '../hooks/useHidrodinamyc';
 import Alerta from './Alerta';
-import { useEffect } from 'react';
+import {useState} from 'react';
 
 
 const Form = () => {
 
 
     //EXTRAYENDO DATOS DEL CONTEXT HYDRODINAMY
-    const {handleChangeDatos,datos,SubmitHydro,alerta,setAlerta,dat,setDatos} = useHydrodynamic()
+    const {handleChangeDatos,datos,SubmitHydro,setDatos} = useHydrodynamic()
 
-    useEffect(()=>{
-      console.log(dat)
-    },[dat])
+    const [alerta,setAlerta] = useState({})
 
 
      const EnviarDatos = e =>{
@@ -21,10 +19,12 @@ const Form = () => {
         setAlerta({msg: 'Hay Campos Vacios',error:true })
         return
     }   
-    setAlerta({})
+
   
       //Submit Hidro Axios request Post formulario
         SubmitHydro(datos)
+        setAlerta({ msg:'Solicitud Enviada'})
+        setDatos('')
   }
 
   const {msg} = alerta

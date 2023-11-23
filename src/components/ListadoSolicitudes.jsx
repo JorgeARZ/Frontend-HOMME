@@ -30,7 +30,7 @@ const ListadoSolicitudes = () => {
                      <th className="p-4 font-bold">{datos.tiempoEstimado}</th>
                      <th className="p-4 font-bold">{datos.requestStatus}</th>
                      <th className="p-4 font-bold">{datos.emergencia}</th>
-                     <button onClick={()=>setDat(datos)} className='p-4 font-bold'>Editar</button>
+                     <button onClick={()=>setDat(datos)} className='p-4 font-bold'>Editar</button> 
                   </tr>
                   </tbody>
                   

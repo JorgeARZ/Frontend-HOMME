@@ -1,5 +1,5 @@
 import { useState } from "react"
-import axios from "axios"
+import axiosRequest from "../config/axiosRequest"
 
 
 const ShowRequest = () => {
@@ -17,7 +17,7 @@ const ShowRequest = () => {
         let config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: 'http://34.176.175.133:3000/requests/status',
+        url: '/status',
         headers: { 
             'x-token': token, 
             // ...data.getHeaders()
@@ -25,7 +25,7 @@ const ShowRequest = () => {
         data : data
         };
 
-        axios.request(config)
+        axiosRequest.request(config)
         .then((response) => {
         setShowId(response.data);
         })

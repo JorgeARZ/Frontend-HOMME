@@ -1,7 +1,8 @@
 import axios from 'axios'
 
-const clienteAxios = axios.create({
-    baseURL: `${import.meta.env.VITE_BACKEND_URL}/users`
+const axiosUsers = axios.create({
+    baseURL: `${import.meta.env.VITE_USERS_URL}`
 })
 
-export default clienteAxios
+export default axiosUsers;
+

@@ -4,7 +4,11 @@ class Feature {
 	properties = {
 		Day: "",
 		Hour: "",
-		name: "",
+		Name: "",
+		Origin: "",
+		Method: "",
+		PartNumber: "",
+		TimeType: "",
 	};
 	geometry = {
 		coordinates: [],
@@ -26,10 +30,22 @@ class Feature {
 		this.properties.Hour = hour;
 	}
 	setName(name) {
-		this.properties.name = name;
+		this.properties.Name = name;
 	}
 	setGeometryType(type) {
 		this.geometry.type = type;
+	}
+	setOrigin(origin) {
+		this.properties.Origin = origin;
+	}
+	setMethod(method) {
+		this.properties.Method = method;
+	}
+	setPartNumber(partNumber) {
+		this.properties.PartNumber = partNumber;
+	}
+	setTimeType(timeType) {
+		this.properties.TimeType = timeType;
 	}
 }
 
@@ -48,10 +64,19 @@ class GeoJson {
 
 function parseTimeToDateTime(time) {
 	time = time.replace("_", ":");
-
-	time = time.replace("Aug", "06");
-	console.log(time);
-	const dateTime = DateTime.fromISO(time, { zone: "utc-0" });
+	time = time.replace("Jan", "01");
+	time = time.replace("Feb", "02");
+	time = time.replace("Mar", "03");
+	time = time.replace("Apr", "04");
+	time = time.replace("May", "05");
+	time = time.replace("Jun", "06");
+	time = time.replace("Jul", "07");
+	time = time.replace("Aug", "08");
+	time = time.replace("Sep", "09");
+	time = time.replace("Oct", "10");
+	time = time.replace("Nov", "11");
+	time = time.replace("Dec", "12");
+	const dateTime = DateTime.fromISO(time, { zone: "utc" });
 	return dateTime;
 }
 
@@ -61,28 +86,86 @@ function getWeekDayFromDateTime(dateTime) {
 }
 
 function getTimeStepFromString(timeStep) {
-	let timeStepSplittedOne = timeStep.trim().split(",")
-    let timeStepSplittedTwo = timeStepSplittedOne[1].trim().split(":")
+	let timeStepSplittedOne = timeStep.trim().split(",");
+	let timeStepSplittedTwo = timeStepSplittedOne[1].trim().split(":");
 
 	const timeStepSplittedHour = timeStepSplittedTwo[0];
 	const timeStepMinutes = timeStepSplittedTwo[1];
 
-   // console.log({ hours: timeStepSplittedHour, minutes: timeStepMinutes })
+	// console.log({ hours: timeStepSplittedHour, minutes: timeStepMinutes })
 
 	return { hours: timeStepSplittedHour, minutes: timeStepMinutes };
 }
 
-export function parseJsonToGeoJson(jsonObject) {
-	console.log(jsonObject.type);
+function transformNameToProperties(name) {
+	let nameSplitted = name.split("_");
+	let Origin = nameSplitted[0];
+	let Method = nameSplitted[1];
+	let PartNumber = nameSplitted[2];
+	let TimeType = "";
+
+	if (Origin === "COPd") {
+		TimeType = "diario";
+		Origin = "COP";
+	} else if (origin === "COPh") {
+		TimeType = "horario";
+		Origin = "COP";
+	}
+
+	return {
+		Origin,
+		Method,
+		PartNumber,
+		TimeType,
+	};
+}
+
+export function parseJsonToGeoJson(
+	jsonObject,
+	options = {
+		StartDateTime: null,
+		EndDateTime: null,
+		Method: null,
+		Origin: null,
+		TimeType: null,
+	}
+) {
+	const { Method, Origin, TimeType } = options;
+	let { StartDateTime, EndDateTime } = options;
+
+	if (StartDateTime && EndDateTime) {
+		StartDateTime = DateTime.fromISO(StartDateTime, { zone: "utc" });
+		EndDateTime = DateTime.fromISO(EndDateTime, { zone: "utc" });
+	}
+
 	let geoJson = new GeoJson(jsonObject.type, jsonObject.name);
 	for (let feature of jsonObject.features) {
 		let startTime = parseTimeToDateTime(
 			feature.geometry.when.timespans[0].start
 		);
 
+		const modelProperties = transformNameToProperties(feature.properties.name);
+
+		if (
+			Origin &&
+			modelProperties.Origin !== Origin &&
+			Method &&
+			modelProperties.Method !== Method &&
+			TimeType &&
+			modelProperties.TimeType !== TimeType
+		) {
+			continue;
+		}
+
 		for (let coordinate of feature.geometry.coordinates) {
 			const weekday = getWeekDayFromDateTime(startTime);
 			const featureParsed = new Feature(feature.properties.name);
+
+			featureParsed.setOrigin(modelProperties.Origin);
+			featureParsed.setMethod(modelProperties.Method);
+			featureParsed.setPartNumber(modelProperties.PartNumber);
+			featureParsed.setTimeType(modelProperties.TimeType);
+
 			featureParsed.setCoordinates(coordinate[0], coordinate[1]);
 
 			featureParsed.setDay(weekday);
@@ -96,8 +179,13 @@ export function parseJsonToGeoJson(jsonObject) {
 
 			featureParsed.setHour(startTime.hour);
 
+			if (StartDateTime && EndDateTime) {
+				if (startTime < StartDateTime || startTime > EndDateTime) {
+					continue;
+				}
+			}
+
 			geoJson.addFeature(featureParsed);
-			
 		}
 	}
 	return geoJson;

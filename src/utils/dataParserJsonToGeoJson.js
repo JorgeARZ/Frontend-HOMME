@@ -33,6 +33,10 @@ class Feature {
 		this.properties.Name = name;
 	}
 	setGeometryType(type) {
+		if(type === "LineString") {
+			type = "Point"
+		}
+	
 		this.geometry.type = type;
 	}
 	setOrigin(origin) {

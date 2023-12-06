@@ -4981,8 +4981,8 @@ const data2 ={
 			}]}}
 
 
- const dataParsed = parseJsonToGeoJson(data2.GeoJSON);
-const newData = JSON.stringify(dataParsed, null, 2);
+//  const dataParsed = parseJsonToGeoJson(data2.GeoJSON);
+// const newData = JSON.stringify(dataParsed, null, 2);
 
-console.log(newData);
+// console.log(newData);
 

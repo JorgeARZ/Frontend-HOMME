@@ -36,7 +36,7 @@ const ShowMdp = () => {
 
             axiosRequest.request(config)
             .then((response) => {
-                setMdpGeojson([response.data]);
+                setMdpGeojson(response.data);
             })
             .catch((error) => {
             console.log(error);

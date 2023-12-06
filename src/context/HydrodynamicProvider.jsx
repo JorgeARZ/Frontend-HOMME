@@ -35,7 +35,6 @@ export const HydrodynamicProvider = ({children}) =>{
         
         axiosUsers.request(config)
         .then((response) => {
-          // setViewDatos(JSON.stringify(response.data));
           setViewDatos([response.data]);
         })
         .catch((error) => {

@@ -9,6 +9,13 @@ const ShowMdp = () => {
     const [getID,setgetID] = useState('')
     const {setMdpGeojson} = useHydrodynamic()
 
+
+
+
+
+
+
+
     const MDP = e =>{
         e.preventDefault()
             const token = localStorage.getItem('token')
@@ -29,7 +36,7 @@ const ShowMdp = () => {
 
             axiosRequest.request(config)
             .then((response) => {
-                setMdpGeojson(response.data);
+                setMdpGeojson([response.data]);
             })
             .catch((error) => {
             console.log(error);
@@ -39,6 +46,7 @@ const ShowMdp = () => {
 
 
             return (
+                <>
                 <form onSubmit={MDP}>
                 <div>
                     <h1 className="text-center font-black text-4xl mt-5 capitalize">show MDP</h1>
@@ -49,6 +57,8 @@ const ShowMdp = () => {
                     </div>
                 </div>
                </form>
+
+               </>
             )
             }
 

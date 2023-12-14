@@ -4,11 +4,6 @@ const ListadoSolicitudes = () => {
 
 
       const {ViewDatos,setDat} = useHydrodynamic()
-      // console.log(ViewDatos)
-
-
-
-
       
           const resultados = []
           

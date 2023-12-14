@@ -10,22 +10,19 @@ const Mapboox = () => {
   const [range, setRange] = useState("");
 
   const { mdpGeojson } = useHydrodynamic();
-  console.log(mdpGeojson.model)
-  // console.log(typeof(mdpGeojson))
+  // console.log(mdpGeojson.model.Resultado)
+
+  const objectMdp = Object.values(mdpGeojson)
 
   let datalist = [];
 
+  objectMdp.forEach(element => {
+    datalist.push(element)
+  });
+
+
   
 
-  // mdpGeojson.model.Resultados.forEach((data) => {
-  //   console.log(data)
-
-    // let result = parseJsonToGeoJson(data.GeoJSON)
-    // const newData = JSON.stringify(result, null, 2);
-    // console.log(newData)
-
-
-  // });
 
   //Assign the Mapbox token from the environment variable set in .env
   mapboxgl.accessToken =
@@ -37,1133 +34,7 @@ const Mapboox = () => {
   const [lat, setLat] = useState(-33.0247);
   const [zoom, setZoom] = useState(12);
 
-  const geojson = {
-    features: [
-      {
-        type: "Feature",
-        properties: {
-          Day: "Fri",
-          Hour: 21,
-          Name: "COP_deterministic_1",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "1",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.3843173312498, -34.86979775597513],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Fri",
-          Hour: 22,
-          Name: "COP_deterministic_1",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "1",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.35261083086942, -34.841103889181156],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Fri",
-          Hour: 23,
-          Name: "COP_deterministic_1",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "1",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.31529331580113, -34.81302200056086],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Fri",
-          Hour: 0,
-          Name: "COP_deterministic_1",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "1",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.29413065303086, -34.77561903216672],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 1,
-          Name: "COP_deterministic_1",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "1",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.2670096198308, -34.74294994973805],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 2,
-          Name: "COP_deterministic_1",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "1",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.25406553445104, -34.71257577277744],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 3,
-          Name: "COP_deterministic_1",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "1",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.23682134812506, -34.68321453622605],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 4,
-          Name: "COP_deterministic_1",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "1",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.22923206624179, -34.64970611888679],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 5,
-          Name: "COP_deterministic_1",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "1",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.20934695912344, -34.614143585919],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 6,
-          Name: "COP_deterministic_1",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "1",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.20894435490956, -34.574002659768546],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 7,
-          Name: "COP_deterministic_1",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "1",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.20119472357592, -34.53507653418164],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 8,
-          Name: "COP_deterministic_1",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "1",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.19698546865646, -34.47978991664437],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 9,
-          Name: "COP_deterministic_1",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "1",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.20568722134294, -34.423211283274426],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 10,
-          Name: "COP_deterministic_1",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "1",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.20337391205561, -34.36495712235382],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Fri",
-          Hour: 21,
-          Name: "COP_deterministic_2",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "2",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.3843173312498, -34.86529074019152],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Fri",
-          Hour: 22,
-          Name: "COP_deterministic_2",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "2",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.34686823147284, -34.84167173347989],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Fri",
-          Hour: 23,
-          Name: "COP_deterministic_2",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "2",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.31208254219565, -34.81229745256073],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Fri",
-          Hour: 0,
-          Name: "COP_deterministic_2",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "2",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.28814901124318, -34.776496208219214],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 1,
-          Name: "COP_deterministic_2",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "2",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.26908050223663, -34.74047426811292],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 2,
-          Name: "COP_deterministic_2",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "2",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.25735413891367, -34.710053572854534],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 3,
-          Name: "COP_deterministic_2",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "2",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.25034780395875, -34.677299965471946],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 4,
-          Name: "COP_deterministic_2",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "2",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.23241256772285, -34.64674671527677],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 5,
-          Name: "COP_deterministic_2",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "2",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.2205695294531, -34.60972757014419],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 6,
-          Name: "COP_deterministic_2",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "2",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.21166174758099, -34.5710365108096],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 7,
-          Name: "COP_deterministic_2",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "2",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.20574456130603, -34.53195213740391],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 8,
-          Name: "COP_deterministic_2",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "2",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.21756757447088, -34.47760996553615],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 9,
-          Name: "COP_deterministic_2",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "2",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.23088593276975, -34.421476631768144],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 10,
-          Name: "COP_deterministic_2",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "2",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.24022132583738, -34.36302743127635],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Fri",
-          Hour: 21,
-          Name: "COP_deterministic_3",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "3",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.37958158942489, -34.867544156281625],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Fri",
-          Hour: 22,
-          Name: "COP_deterministic_3",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "3",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.3396106474915, -34.84713382050493],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Fri",
-          Hour: 23,
-          Name: "COP_deterministic_3",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "3",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.30240006037305, -34.81816545232725],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Fri",
-          Hour: 0,
-          Name: "COP_deterministic_3",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "3",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.270077018649, -34.78686193035189],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 1,
-          Name: "COP_deterministic_3",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "3",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.24308198192396, -34.75348933999198],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 2,
-          Name: "COP_deterministic_3",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "3",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.22744567492153, -34.72462830891528],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 3,
-          Name: "COP_deterministic_3",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "3",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.21160613665688, -34.69379001194472],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 4,
-          Name: "COP_deterministic_3",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "3",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.19837422712614, -34.661930314619624],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 5,
-          Name: "COP_deterministic_3",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "3",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.1835237022274, -34.62452166043288],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 6,
-          Name: "COP_deterministic_3",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "3",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.1791053045297, -34.58487068050928],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 7,
-          Name: "COP_deterministic_3",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "3",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.18045155242706, -34.54394882815386],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 8,
-          Name: "COP_deterministic_3",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "3",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.18427937738622, -34.489978361836926],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 9,
-          Name: "COP_deterministic_3",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "3",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.18265697712998, -34.43278834575465],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 10,
-          Name: "COP_deterministic_3",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "3",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.17363633888148, -34.37356952768671],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Fri",
-          Hour: 21,
-          Name: "COP_deterministic_4",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "4",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.37958133100562, -34.87205117038332],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Fri",
-          Hour: 22,
-          Name: "COP_deterministic_4",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "4",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.34006374761985, -34.85104745922265],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Fri",
-          Hour: 23,
-          Name: "COP_deterministic_4",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "4",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.31505543415712, -34.814418420044284],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Fri",
-          Hour: 0,
-          Name: "COP_deterministic_4",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "4",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.29446160409306, -34.77683162286207],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 1,
-          Name: "COP_deterministic_4",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "4",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.26831248127088, -34.74360150819987],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 2,
-          Name: "COP_deterministic_4",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "4",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.24944904836289, -34.71558361471771],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 3,
-          Name: "COP_deterministic_4",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "4",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.23233031911515, -34.685155388323295],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 4,
-          Name: "COP_deterministic_4",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "4",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.21589194956564, -34.65396136167338],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 5,
-          Name: "COP_deterministic_4",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "4",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.20580216884038, -34.61682447715686],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 6,
-          Name: "COP_deterministic_4",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "4",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.20515513316354, -34.57691622860711],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 7,
-          Name: "COP_deterministic_4",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "4",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.19736522461785, -34.536989834876316],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 8,
-          Name: "COP_deterministic_4",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "4",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.18665285642227, -34.48244422206218],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 9,
-          Name: "COP_deterministic_4",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "4",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.1843761104103, -34.42575461789877],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 10,
-          Name: "COP_deterministic_4",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "4",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.18934623369222, -34.36666641387836],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Fri",
-          Hour: 21,
-          Name: "COP_deterministic_5",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "5",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.3843173312498, -34.874304768411605],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Fri",
-          Hour: 22,
-          Name: "COP_deterministic_5",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "5",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.355458614371, -34.84314839049835],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Fri",
-          Hour: 23,
-          Name: "COP_deterministic_5",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "5",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.3305294245379, -34.806574869183706],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Fri",
-          Hour: 0,
-          Name: "COP_deterministic_5",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "5",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.30030583914636, -34.77355821408738],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 1,
-          Name: "COP_deterministic_5",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "5",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.27481198927721, -34.74035058852866],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 2,
-          Name: "COP_deterministic_5",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "5",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.24969989019858, -34.71540913515562],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 3,
-          Name: "COP_deterministic_5",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "5",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.2342791756745, -34.68464328322038],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 4,
-          Name: "COP_deterministic_5",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "5",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.22353766262347, -34.65196860038222],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 5,
-          Name: "COP_deterministic_5",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "5",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.20460703633677, -34.61625471677052],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 6,
-          Name: "COP_deterministic_5",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "5",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.18878898410017, -34.57869946819737],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 7,
-          Name: "COP_deterministic_5",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "5",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.18562446750417, -34.53790712511251],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 8,
-          Name: "COP_deterministic_5",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "5",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.1880558099581, -34.483419394582675],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 9,
-          Name: "COP_deterministic_5",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "5",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.1776568812712, -34.42662939190322],
-          type: "Point",
-        },
-      },
-      {
-        type: "Feature",
-        properties: {
-          Day: "Sat",
-          Hour: 10,
-          Name: "COP_deterministic_5",
-          Origin: "COP",
-          Method: "deterministic",
-          PartNumber: "5",
-          TimeType: "",
-        },
-        geometry: {
-          coordinates: [-73.19447299133024, -34.368975185299455],
-          type: "Point",
-        },
-      },
-    ],
-    type: "FeatureCollection",
-  };
-
-  const prueba2 = {
+  const datos = {
     type: "FeatureCollection",
     features: [
       {
@@ -1342,101 +213,86 @@ const Mapboox = () => {
           type: "Point",
         },
       },
-      //  {
-      //    "type": "Feature",
-      //    "properties": {
-      //      "Day": "Sat",
-      //      "Hour": 0,
-      //      "Name": "COPd_direct_1",
-      //      "Origin": "COP",
-      //      "Method": "direct",
-      //      "PartNumber": "1",
-      //      "TimeType": "diario"
-      //    },
-      //    "geometry": {
-      //      "coordinates": [
-      //        -72.82757906031426,
-      //        -32.10577007835014
-      //      ],
-      //      "type": "Point"
-      //    }
-      //  },
-      //  {
-      //    "type": "Feature",
-      //    "properties": {
-      //      "Day": "Sun",
-      //      "Hour": 1,
-      //      "Name": "COPd_direct_1",
-      //      "Origin": "COP",
-      //      "Method": "direct",
-      //      "PartNumber": "1",
-      //      "TimeType": "diario"
-      //    },
-      //    "geometry": {
-      //      "coordinates": [
-      //        -72.82589704756208,
-      //        -32.10043203436341
-      //      ],
-      //      "type": "Point"
-      //    }
-      //  },
-      //  {
-      //    "type": "Feature",
-      //    "properties": {
-      //      "Day": "Sun",
-      //      "Hour": 2,
-      //      "Name": "COPd_direct_1",
-      //      "Origin": "COP",
-      //      "Method": "direct",
-      //      "PartNumber": "1",
-      //      "TimeType": "diario"
-      //    },
-      //    "geometry": {
-      //      "coordinates": [
-      //        -72.8236412042805,
-      //        -32.09521563703279
-      //      ],
-      //      "type": "Point"
-      //    }
-      //  },
-      //  {
-      //    "type": "Feature",
-      //    "properties": {
-      //      "Day": "Sun",
-      //      "Hour": 3,
-      //      "Name": "COPd_direct_1",
-      //      "Origin": "COP",
-      //      "Method": "direct",
-      //      "PartNumber": "1",
-      //      "TimeType": "diario"
-      //    },
-      //    "geometry": {
-      //      "coordinates": [
-      //        -72.82381042879365,
-      //        -32.089725538289116
-      //      ],
-      //      "type": "Point"
-      //    }
-      //  },
-      //  {
-      //    "type": "Feature",
-      //    "properties": {
-      //      "Day": "Sun",
-      //      "Hour": 4,
-      //      "Name": "COPd_direct_1",
-      //      "Origin": "COP",
-      //      "Method": "direct",
-      //      "PartNumber": "1",
-      //      "TimeType": "diario"
-      //    },
-      //    "geometry": {
-      //      "coordinates": [
-      //        -72.82423123993148,
-      //        -32.08422640920805
-      //      ],
-      //      "type": "Point"
-      //    }
-      //  },
+      {
+        type: "Feature",
+        properties: {
+          Day: "Sat",
+          Hour: 0,
+          Name: "COPd_direct_1",
+          Origin: "COP",
+          Method: "direct",
+          PartNumber: "1",
+          TimeType: "diario",
+        },
+        geometry: {
+          coordinates: [-72.82757906031426, -32.10577007835014],
+          type: "Point",
+        },
+      },
+      {
+        type: "Feature",
+        properties: {
+          Day: "Sun",
+          Hour: 1,
+          Name: "COPd_direct_1",
+          Origin: "COP",
+          Method: "direct",
+          PartNumber: "1",
+          TimeType: "diario",
+        },
+        geometry: {
+          coordinates: [-72.82589704756208, -32.10043203436341],
+          type: "Point",
+        },
+      },
+      {
+        type: "Feature",
+        properties: {
+          Day: "Sun",
+          Hour: 2,
+          Name: "COPd_direct_1",
+          Origin: "COP",
+          Method: "direct",
+          PartNumber: "1",
+          TimeType: "diario",
+        },
+        geometry: {
+          coordinates: [-72.8236412042805, -32.09521563703279],
+          type: "Point",
+        },
+      },
+      {
+        type: "Feature",
+        properties: {
+          Day: "Sun",
+          Hour: 3,
+          Name: "COPd_direct_1",
+          Origin: "COP",
+          Method: "direct",
+          PartNumber: "1",
+          TimeType: "diario",
+        },
+        geometry: {
+          coordinates: [-72.82381042879365, -32.089725538289116],
+          type: "Point",
+        },
+      },
+      {
+        type: "Feature",
+        properties: {
+          Day: "Sun",
+          Hour: 4,
+          Name: "COPd_direct_1",
+          Origin: "COP",
+          Method: "direct",
+          PartNumber: "1",
+          TimeType: "diario",
+        },
+        geometry: {
+          coordinates: [-72.82423123993148, -32.08422640920805],
+          type: "Point",
+        },
+      },
       //  {
       //    "type": "Feature",
       //    "properties": {
@@ -6194,9 +5050,15 @@ const Mapboox = () => {
     },
   };
 
-  // const opti = parseJsonToGeoJson(data.GeoJSON)
-  // const newdata = JSON.stringify(opti,null, 2)
-  // console.log(newdata)
+
+
+
+
+
+
+  // let result = parseJsonToGeoJson(data.GeoJSON);
+  // const newData = result;
+  // console.log(newData)
 
   useEffect(() => {
     const coordinates = document.getElementById("coordinates");
@@ -6210,12 +5072,13 @@ const Mapboox = () => {
     });
 
     map.current.on("load", () => {
+      FocusEvent;
       map.current.addLayer({
         id: "data",
         type: "circle",
         source: {
           type: "geojson",
-          data: prueba2, // replace this with the url of your own geojson
+          data:datalist// replace this with the url of your own geojson
         },
       });
 
@@ -6331,7 +5194,7 @@ const Mapboox = () => {
         <div id="console">
           <div className="session" id="sliderbar">
             <h2>
-              Hour: <label id="active-hour">12PM</label>
+              Hour: <label id="active-hour">0</label>
             </h2>
             <input
               id="slider"

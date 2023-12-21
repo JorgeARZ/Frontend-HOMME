@@ -2,6 +2,8 @@ import { createContext,useState,useEffect, children } from "react";
 import FormData from "form-data";
 import axiosUsers from "../config/axios";
 import axiosModeling from "../config/axiosModeling";
+import { parseJsonToGeoJson,GeoJson } from "../utils/dataParserJsonToGeoJson";
+
 // import Alerta from "../components/Alerta";
 
 const HydrodynamicContext = createContext()
@@ -11,7 +13,9 @@ export const HydrodynamicProvider = ({children}) =>{
   const [ViewDatos,setViewDatos] = useState([])
   
   const [dat,setDat] =useState({})
-  const [mdpGeojson,setMdpGeojson] = useState({})
+
+
+  const [mdpCheck, setMdpCheck] = useState(new GeoJson())
 
 
 
@@ -189,9 +193,6 @@ export const HydrodynamicProvider = ({children}) =>{
           });
 
         }
-
-        //Obtener MDP GeoJson
-
     return(
       <>
         <HydrodynamicContext.Provider
@@ -206,7 +207,7 @@ export const HydrodynamicProvider = ({children}) =>{
                 datosMdp,
                 dat,
                 setDatosMdp,
-                setDat,setMdpGeojson,mdpGeojson
+                setDat,mdpCheck, setMdpCheck
             }}
         
         >

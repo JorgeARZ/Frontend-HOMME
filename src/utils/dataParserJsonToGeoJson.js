@@ -53,7 +53,7 @@ class Feature {
 	}
 }
 
-class GeoJson {
+export class GeoJson {
 	features = [];
 	type;
 	constructor(type, name) {

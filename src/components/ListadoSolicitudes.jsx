@@ -12,23 +12,26 @@ const ListadoSolicitudes = () => {
                 resultados.push(
                   <>
 
+
                   <tbody>   
                   <tr className="border-b text-center">
-                     <th className="p-4 font-bold" >{datos._id}</th>
-                     <th className="p-4 font-bold">{datos.fechaInicio}</th>
-                     <th className="p-4 font-bold">{datos.fechaTermino}</th>
-                     <th className="p-4 font-bold">{datos.fechaPeticion}</th>
-                     <th className="p-4 font-bold">{datos.latitudNorte}</th>
-                     <th className="p-4 font-bold">{datos.latitudSur}</th>
-                     <th className="p-4 font-bold">{datos.longitudOriente}</th>
-                     <th className="p-4 font-bold">{datos.longitudPoniente}</th>
-                     <th className="p-4 font-bold">{datos.modelType}</th>
-                     <th className="p-4 font-bold">{datos.tiempoEstimado}</th>
-                     <th className="p-4 font-bold">{datos.requestStatus}</th>
-                     <th className="p-4 font-bold">{datos.emergencia}</th>
-                     <button onClick={()=>setDat(datos)} className='p-4 font-bold'>Editar</button> 
+                     <td className="p-4 font-bold">{datos._id}</td>
+                     <td className="p-4 font-bold">{datos.fechaInicio}</td>
+                     <td className="p-4 font-bold">{datos.fechaTermino}</td>
+                     <td className="p-4 font-bold">{datos.fechaPeticion}</td>
+                     <td className="p-4 font-bold">{datos.latitudNorte}</td>
+                     <td className="p-4 font-bold">{datos.latitudSur}</td>
+                     <td className="p-4 font-bold">{datos.longitudOriente}</td>
+                     <td className="p-4 font-bold">{datos.longitudPoniente}</td>
+                     <td className="p-4 font-bold">{datos.modelType}</td>
+                     <td className="p-4 font-bold">{datos.tiempoEstimado}</td>
+                     <td className="p-4 font-bold">{datos.requestStatus}</td>
+                     <td className="p-4 font-bold">{datos.emergencia}</td>
+                     {/* <button onClick={()=>setDat(datos)} className='p-4 font-bold'>Editar</button>  */}
                   </tr>
                   </tbody>
+
+
                   
                   </>
                )

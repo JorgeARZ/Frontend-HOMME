@@ -2,14 +2,17 @@ import { useState } from "react";
 import useHydrodynamic from "../hooks/useHidrodinamyc";
 import axiosRequest from "../config/axiosRequest";
 import { parseJsonToGeoJson,GeoJson } from "../utils/dataParserJsonToGeoJson";
+import Mapboox from "./Mapboox";
 
 
+console.log(Mapboox)
 const ShowMdp = () => {
+  
   const [getID, setgetID] = useState("");
-  const { setMdpGeojson,setMdpCheck} = useHydrodynamic();
+  const {setMdpCheck} = useHydrodynamic();
 
   const MDP = (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
     const token = localStorage.getItem("token");
 
     let data = new FormData();
@@ -29,7 +32,7 @@ const ShowMdp = () => {
     axiosRequest
       .request(config)
       .then((response) => {
-        (response.data)
+        console.log(response.data)
 
         let alldata = []
         const model = response.data.model;
@@ -50,6 +53,8 @@ const ShowMdp = () => {
         console.log(error);
       });
   };
+
+
 
   return (
     <>

@@ -1,18 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useHydrodynamic from "../hooks/useHidrodinamyc";
 import axiosRequest from "../config/axiosRequest";
 import { parseJsonToGeoJson,GeoJson } from "../utils/dataParserJsonToGeoJson";
-import Mapboox from "./Mapboox";
 
 
-console.log(Mapboox)
 const ShowMdp = () => {
+  
   
   const [getID, setgetID] = useState("");
   const {setMdpCheck} = useHydrodynamic();
 
+
+  // const handleMDP = e =>{
+  //   e.preventDefault()
+  //   MDP()
+  // }
+  // useEffect(() => {
+  //   MDP()
+  // }, [])
+
   const MDP = (e) => {
-    e.preventDefault(); 
+    e.preventDefault()
     const token = localStorage.getItem("token");
 
     let data = new FormData();
@@ -32,7 +40,7 @@ const ShowMdp = () => {
     axiosRequest
       .request(config)
       .then((response) => {
-        console.log(response.data)
+        (response.data)
 
         let alldata = []
         const model = response.data.model;
@@ -41,20 +49,19 @@ const ShowMdp = () => {
         resutlados.forEach((data) => {
            const geojson = data.GeoJSON;
            let result = parseJsonToGeoJson(geojson);
-            const newData = result.features;
+           const newData = result.features
            alldata = alldata.concat(newData)
+           setMdpCheck(alldata)
         })
-         let geojson = new GeoJson()
-         geojson.features = alldata
-         geojson.type = "FeatureCollection"
-         setMdpCheck(geojson)
+        //  let geojson = new GeoJson()
+        //  geojson.features = alldata
+        //  geojson.type = "FeatureCollection"
+        //  setMdpCheck(geojson)
        })
       .catch((error) => {
         console.log(error);
       });
   };
-
-
 
   return (
     <>

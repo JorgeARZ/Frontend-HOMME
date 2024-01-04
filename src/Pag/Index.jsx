@@ -5,7 +5,8 @@ import ShowRequest from "../components/ShowRequest";
 import ShowGrid from "../components/ShowGrid";
 import ShowBathy from "../components/ShowBathy";
 import ShowMdp from "../components/ShowMdp";
-import Mapbox from "../components/Mapboox";
+import Mapboox from "../components/Mapboox";
+import Mapbox from "../components/Mapbox"
 
 const Index = () => {
   return (
@@ -14,7 +15,7 @@ const Index = () => {
         <div className=" md:block  md:w-1/2 lg:w-1/3">
           <Formulario />
         </div>
-        <Mapbox />
+        <Mapbox/>
       </div>
       <div className="mb-6 mt-12">
         <ShowMdp />

@@ -19,10 +19,10 @@ const Mapboox = () => {
   const [lng, setLng] = useState(-71.5956);
   const [lat, setLat] = useState(-33.0247);
   const [zoom, setZoom] = useState(3);
-  const [jsonDataChange, setJsonDataChange] = useState({
-    "type": "FeatureCollection",
-    "features": []
-})
+//   const [jsonDataChange, setJsonDataChange] = useState({
+//     "type": "FeatureCollection",
+//     "features": []
+// })
   
 useEffect(() => {
     paintPoint({
@@ -32,6 +32,7 @@ useEffect(() => {
 }, [mdpCheck])
 
 const paintPoint = (data) => {
+  console.log(data)
 
     const coordinates = document.getElementById("coordinates");
     if (map.current) return; // initialize map only once
@@ -44,6 +45,7 @@ const paintPoint = (data) => {
 
 
     map.current.on("load", () => {
+    
         map.current.addSource("data", {
           type: "geojson",
           // Use a URL for the value for the `data` property.
@@ -51,7 +53,7 @@ const paintPoint = (data) => {
         });
     
         map.current.getSource("data").setData(data);
-    
+        
 
 
       map.current.addLayer({

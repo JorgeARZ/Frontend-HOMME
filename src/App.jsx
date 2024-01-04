@@ -16,14 +16,12 @@ function App() {
         <Routes>
           <Route path="/" element={<AuthLayout />}>
             <Route index element={<Login />} />
-            <Route path="registrar" element={<Registrar />} />
+            <Route path="/registrar" element={<Registrar />} />
           </Route>
-        </Routes>
-
+    
         {/* Area Privada */}
-        <Routes>
-          <Route element={<RutaProtegida />}>
-            <Route path="index" element={<Index />} />
+          <Route path='/' element={<RutaProtegida />}>
+            <Route path="/index" element={<Index />} />
             <Route path="Mdp" element={<Mdp />} />
           </Route>
         </Routes>

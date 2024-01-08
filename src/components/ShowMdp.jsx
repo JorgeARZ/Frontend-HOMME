@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useHydrodynamic from "../hooks/useHidrodinamyc";
 import axiosRequest from "../config/axiosRequest";
-import { parseJsonToGeoJson,GeoJson } from "../utils/dataParserJsonToGeoJson";
+import { parseJsonToGeoJson } from "../utils/dataParserJsonToGeoJson";
 
 
 const ShowMdp = () => {
@@ -10,14 +10,6 @@ const ShowMdp = () => {
   const [getID, setgetID] = useState("");
   const {setMdpCheck} = useHydrodynamic();
 
-
-  // const handleMDP = e =>{
-  //   e.preventDefault()
-  //   MDP()
-  // }
-  // useEffect(() => {
-  //   MDP()
-  // }, [])
 
   const MDP = (e) => {
     e.preventDefault()
@@ -53,10 +45,6 @@ const ShowMdp = () => {
            alldata = alldata.concat(newData)
            setMdpCheck(alldata)
         })
-        //  let geojson = new GeoJson()
-        //  geojson.features = alldata
-        //  geojson.type = "FeatureCollection"
-        //  setMdpCheck(geojson)
        })
       .catch((error) => {
         console.log(error);

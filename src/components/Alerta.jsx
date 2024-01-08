@@ -1,7 +1,7 @@
 
 const Alerta = ({alerta}) => {
   return (
-    <div className={`${alerta.error ? 'from-red-400 to-red-600' : 'from-indigo-400 to-indigo-600'} bg-gradient-to-r text-center p-3 rounded-xl uppercase text-white font-bold  text-sm mb-3`}>
+    <div className={`${alerta.error ? ' text-red-600' : 'text-blue-900'} text-center capitalize font-bold  mb-3 mt-4 text-lg`}>
         {alerta.msg}
     </div>
   )

@@ -4,7 +4,8 @@ import { useState } from "react";
 
 const Form = () => {
   //EXTRAYENDO DATOS DEL CONTEXT HYDRODINAMY
-  const { handleChangeDatos, datos, SubmitHydro, setDatos,guardarPaciente } = useHydrodynamic();
+  const { handleChangeDatos, datos, SubmitHydro } =
+    useHydrodynamic();
 
   const [alerta, setAlerta] = useState({});
 
@@ -25,142 +26,133 @@ const Form = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center px-5 lg:py-0">
-        <div className="w-full rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0 bg-red-900 mb-10">
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+      <div className="mt-4 relative mx-auto max-w-md px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-xl sm:px-10 flex justify-center items">
+        <div className="w-full">
+          <h1 className="text-center capitalize font-bold text-4xl text-blue-950">
+            MDH
+          </h1>
+          {msg && <Alerta alerta={alerta} />}
+          <div className="mt-5">
             <form onSubmit={EnviarDatos}>
-              <h1 className="text-white font-bold text-xl text-center capitalize">
-                modelo hidrodinamico
-              </h1>
-              {msg && <Alerta alerta={alerta} />}
-
-              <div>
+              <div className="relative mt-3">
                 <label
                   htmlFor="name"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white capitalize"
+                  className="block mb-2 text-sm font-medium text-blue-950 capitalize"
                 >
                   fecha Inicio
                 </label>
                 <input
                   type="datetime-local"
-                  placeholder="Fecha Inicio"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
-                  value={datos.fechaInicio}
                   name="fechaInicio"
+                  value={datos.fechaInicio}
                   onChange={(e) => handleChangeDatos(e)}
+                  className="border border-blue-900 text-gray-900  rounded  w-full"
                 />
               </div>
-              <div>
+              <div className="relative mt-3">
                 <label
                   htmlFor="name"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white capitalize mt-2"
+                  className="block mb-2 text-sm font-medium text-blue-950 capitalize"
                 >
                   fecha termino
                 </label>
                 <input
                   type="datetime-local"
-                  placeholder="Fecha Termino"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
                   value={datos.fechaTermino}
                   name="fechaTermino"
                   onChange={(e) => handleChangeDatos(e)}
+                  className=" border border-blue-900 text-blue-950 rounded w-full"
                 />
               </div>
-              <div>
+              <div className="relative mt-3">
                 <label
                   htmlFor="name"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-blue-950 capitalize"
                 >
                   latitud norte
                 </label>
                 <input
                   type="text"
                   name="latitudNorte"
-                  id="latitudNorte"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
-                  placeholder="latitudNorte"
                   value={datos.latitudNorte}
                   onChange={(e) => handleChangeDatos(e)}
+                  className=" border border-blue-900 text-blue-950  rounded  w-full"
                 />
               </div>
-              <div>
+              <div className="relative mt-3">
                 <label
                   htmlFor="name"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-blue-950 capitalize"
                 >
                   latitud sur
                 </label>
                 <input
                   type="text"
                   name="latitudSur"
-                  id="latitudSur"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
-                  placeholder="latitudSur"
                   value={datos.latitudSur}
                   onChange={(e) => handleChangeDatos(e)}
+                  className=" border border-blue-900 text-blue-950  rounded  w-full"
                 />
               </div>
-              <div>
+              <div className="relative mt-3">
                 <label
                   htmlFor="name"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-blue-950 capitalize "
                 >
                   longitud oriente
                 </label>
                 <input
                   type="text"
                   name="longitudOriente"
-                  id="longitudOriente"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
-                  placeholder="longitudOriente"
                   value={datos.longitudOriente}
                   onChange={(e) => handleChangeDatos(e)}
+                  className=" border border-blue-900 text-blue-950  rounded  w-full"
                 />
               </div>
-              <div>
+              <div className="relative mt-3">
                 <label
                   htmlFor="name"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-blue-950 capitalize"
                 >
                   longitud poniente
                 </label>
                 <input
                   type="text"
                   name="longitudPoniente"
-                  id="longitudPoniente"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
-                  placeholder="longitudPoniente"
                   value={datos.longitudPoniente}
                   onChange={(e) => handleChangeDatos(e)}
+                  className=" border border-blue-900 text-blue-950  rounded w-full"
                 />
               </div>
-
-              <div>
+              <div className="relative mt-3">
                 <label
                   htmlFor="name"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-3 text-center "
+                  className="block text-center mb-2 text-sm font-medium text-blue-950 capitalize"
                 >
                   emergencia
                 </label>
                 <input
                   type="radio"
                   name="emergencia"
-                  id="emergencia"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5"
                   value="true"
                   onChange={(e) => handleChangeDatos(e)}
                   checked={datos.emergencia === "true"}
+                  className=" border border-blue-900 text-blue-950  rounded  w-full"
                 />
               </div>
-
-              <input
-                type="submit"
-                className="w-full text-black bg-white hover:bg-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-5"
-              />
+              <div className="my-6">
+                <button
+                  type="submit"
+                  className="capitalize w-full rounded-md bg-blue-950 px-1 py-2 text-white focus:bg-gray-600 focus:outline-none hover:bg-blue-900"
+                >
+                  Enviar
+                </button>
+              </div>
             </form>
           </div>
         </div>
       </div>
+     
     </>
   );
 };

@@ -1,84 +1,72 @@
-import { createContext,useState,children } from "react";
-import {useNavigate} from 'react-router-dom'
+import { createContext, useState, children } from "react";
+import { useNavigate } from "react-router-dom";
 import FormData from "form-data";
 import axiosUsers from "../config/axios";
-// import Cookies from 'js-cookie';
 
-const LoginRegisterContext= createContext()
+const LoginRegisterContext = createContext();
 
-export const LoginRegisterProvider = ({children}) => {
+export const LoginRegisterProvider = ({ children }) => {
+  //Login Datos
+  const [login, setLogin] = useState({
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
 
-    const navigate=useNavigate()
+  const [Token, setToken] = useState({});
+  //HandleLogin
+  const handleLogin = (e) => {
+    setLogin({
+      ...login,
+      [e.target.name]: e.target.value,
+    });
+  };
+  //Submit Login
+  const submitLogin = () => {
+    let data = new FormData();
+    data.append("email", login.email);
+    data.append("password", login.password);
 
-    //Extraer valores del login
-    // const [extraer, setExtraer] = useState({})
-    // console.log(extraer)
+    let config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "/login",
+      headers: {
+        // ...data.getHeaders()
+      },
+      data: data,
+    };
 
-    //Login Datos
-    const [login,setLogin] = useState({
-        email:'',
-        password:''
-      })
-
-      //HandleLogin
-      const handleLogin = e =>{
-        setLogin({
-          ...login,
-          [e.target.name]: e.target.value
-        })
-      }
-
-
-      //Submit Login
-
-      const submitLogin = () =>{
-        let data = new FormData();
-            data.append('email', login.email);
-            data.append('password', login.password);
-
-            let config = {
-                method: 'post',
-                maxBodyLength: Infinity,
-                url: '/login',
-                headers: { 
-                // ...data.getHeaders()
-                },
-                data : data
-            };
-            localStorage.setItem('token',data.token)
-            localStorage.setItem('name',data.name)
-         navigate('/index')
-
-         axiosUsers.request(config)
-            .then((response) => {
-                console.log(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-
-      }
-
+    axiosUsers
+      .request(config)
+      .then((response) => {
+        setToken(response.data);
+        localStorage.setItem("name", Token.name);
+        localStorage.setItem("token", Token.token);
+      }).catch((error) => {
+        setAlerta({
+          msg: error.response.data.msg,
+          error: true,
+        });
+      });
+      navigate("/index");
+  };
 
   return (
     <>
-    <LoginRegisterContext.Provider
-    value={{
-        login,
-        setLogin,
-        handleLogin,
-        submitLogin
-    }}
-
-    
-    
-    
-    
-    >
+      <LoginRegisterContext.Provider
+        value={{
+          login,
+          setLogin,
+          handleLogin,
+          submitLogin,
+          Token,
+        }}
+      >
         {children}
-    </LoginRegisterContext.Provider>
+      </LoginRegisterContext.Provider>
     </>
-  )
-}
+  );
+};
 
 export default LoginRegisterContext;

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import useHydrodynamic from "../hooks/useHidrodinamyc";
 import axiosRequest from "../config/axiosRequest";
 import { parseJsonToGeoJson } from "../utils/dataParserJsonToGeoJson";
@@ -55,24 +55,25 @@ const ShowMdp = () => {
     <>
       <form onSubmit={MDP}>
         <div>
-          <h1 className="text-center font-black text-4xl mt-5 capitalize">
+          <h1 className="text-center capitalize font-bold text-4xl text-blue-950">
             show MDP
           </h1>
           <div className="text-center">
-            <label htmlFor="" className="capitalize text-xl font-medium mr-3">
+            <label htmlFor="" className="text-center capitalize font-bold text-2xl text-blue-950 mr-2">
               ID MDP
             </label>
             <input
               type="text"
               value={getID}
               onChange={(e) => setgetID(e.target.value)}
-              className="border border-black"
+              className=" border border-blue-900 text-blue-950  rounded "
+
             />
             <input
               type="submit"
               value="enviar"
-              className="text-white bg-red-800 hover:text-black font-medium ml-3 p-1 rounded-md px-5 capitalize mt-2"
-            />
+              className="capitalize  rounded-md bg-blue-950 px-4 py-1 ml-2 text-white focus:bg-gray-600 focus:outline-none hover:bg-blue-900"
+              />
           </div>
         </div>
       </form>

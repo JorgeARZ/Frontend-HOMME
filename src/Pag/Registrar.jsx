@@ -30,7 +30,7 @@ const Registrar = () => {
     registar.append("password", password);
 
     try {
-      await axiosUsers({
+      const respuesta = await axiosUsers({
         method: "post",
         url: "/register",
         data: registar,
@@ -38,10 +38,11 @@ const Registrar = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-      setAlerta({
-        msg: "Usuario Creado Correctamente",
-        error: false,
-      });
+      console.log(respuesta)
+      // setAlerta({
+      //   msg: "Usuario Creado Correctamente",
+      //   error: false,
+      // });
     } catch (error) {
       setAlerta({
         msg: error.response.data.msg,
@@ -54,7 +55,105 @@ const Registrar = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center px-6 py-6 mx-auto md:h-screen lg:py-0">
+     <div className="mb-10 text-center mt-36">
+          <h1 className="capitalize font-bold text-4xl text-blue-950">
+            red ocean{" "}
+            <span className="block text-red-800 text-8xl uppercase">homme</span>
+          </h1>
+          <p className="text-2xl font-bold text-blue-950">
+            Hydrodynamic Ocean Models for Maritime Emergencies
+          </p>
+        
+      <div className=" mt-16 relative mx-auto  max-w-md  px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-xl sm:px-10  flex justify-center items-center ">
+        <div className="w-full">
+          
+          <div className="text-center">
+            <h1 className="text-2xl font-bold text-blue-950 capitalize">sign up</h1>
+
+            <p className="mt-2 text-blue-950 capitalize">
+              create your account
+            </p>
+          </div>
+          <div className="mt-5">
+            <form onSubmit={submit}>
+              <div className="relative mt-3">
+                <input
+                  type="name"
+                  name="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  id="name"
+                  placeholder="Users"
+                  className="peer mt-1 w-full border-b-2 border-blue-950 px-0 py-1 placeholder:text-transparent focus:border-blue-900 focus:outline-none"
+                  autoComplete="NA"
+                />
+                <label
+                  forhtml="email"
+                  className="pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-blue-950 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-blue-950 peer-focus:top-0 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-blue-950"
+                >
+                  User
+                </label>
+              </div>
+              <div className="relative mt-3">
+                <input
+                  type="email"
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  id="email"
+                  placeholder="email"
+                  className="peer mt-1 w-full border-b-2 border-blue-950 px-0 py-1 placeholder:text-transparent focus:border-blue-900 focus:outline-none"
+                  autoComplete="NA"
+                />
+                <label
+                  forhtml="email"
+                  className="pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-blue-950 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-blue-950 peer-focus:top-0 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-blue-950"
+                >
+                  Email Address
+                </label>
+              </div>
+              <div className="relative mt-5">
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Password"
+                  className="peer peer mt-1 w-full border-b-2 border-blue-950 px-0 py-1 placeholder:text-transparent focus:border-blue-900 focus:outline-none"
+                />
+                <label
+                  forhtml="password"
+                  className="pointer-events-none absolute top-0 left-0 origin-left -translate-y-1/2 transform text-sm text-blue-950 opacity-75 transition-all duration-100 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-blue-950 peer-focus:top-0 peer-focus:pl-0 peer-focus:text-sm peer-focus:text-blue-950"
+                >
+                  Password
+                </label>
+              </div>
+              {msg && <Alerta alerta={alerta} />}
+              <div className="my-6">
+                <button
+                  type="submit"
+                  className="capitalize w-full rounded-md bg-blue-950 px-1 py-2 text-white focus:bg-gray-600 focus:outline-none hover:bg-blue-900"
+                >
+                  sign up
+                </button>
+              </div>
+              <p className="text-center text-sm text-blue-950">
+              Already have an account?  {''}
+                <Link
+                  to="/"
+                  className="capitalize font-semibold text-blue-950 hover:underline focus:text-blue-950 focus:outline-none hover:text-blue-900"
+                > login</Link>
+
+              </p>
+            </form>
+          </div>
+        </div>
+        </div>
+      </div>
+
+
+      {/* <div className="flex flex-col items-center justify-center px-6 py-6 mx-auto md:h-screen lg:py-0">
         <div className="mb-10 text-center">
           <h1 className="capitalize font-bold text-5xl">
             red ocean{" "}
@@ -143,7 +242,7 @@ const Registrar = () => {
             </form>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

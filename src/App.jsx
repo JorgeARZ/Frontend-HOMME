@@ -7,10 +7,12 @@ import Registrar from "./Pag/Registrar";
 import Index from "./Pag/Index";
 import Mdp from "./Pag/Mdp";
 import { HydrodynamicProvider } from "./context/HydrodynamicProvider";
+import { LoginRegisterProvider } from "./context/LoginRegisterProvider";
 
 function App() {
   return (
     <BrowserRouter>
+    {/* <LoginRegisterProvider> */}
       <HydrodynamicProvider>
         {/* Area Publica */}
         <Routes>
@@ -26,6 +28,7 @@ function App() {
           </Route>
         </Routes>
       </HydrodynamicProvider>
+      {/* </LoginRegisterProvider> */}
     </BrowserRouter>
   );
 }

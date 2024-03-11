@@ -8,14 +8,18 @@ import axiosModeling from "../config/axiosModeling";
 const HydrodynamicContext = createContext();
 
 export const HydrodynamicProvider = ({ children }) => {
+
   const [ViewDatos, setViewDatos] = useState([]);
-  const [dat, setDat] = useState({});
   const [mdpCheck, setMdpCheck] = useState([]);
+  const [loginData,setloginData] =useState({})
+  const [edit,setEdit] = useState({})
+
 
   //Obtener Modelos Hidrodinamicos/MDP
   useEffect(() => {
     let data = new FormData();
     const token = localStorage.getItem("token");
+    if (!token) return;
     let config = {
       method: "get",
       maxBodyLength: Infinity,
@@ -35,7 +39,7 @@ export const HydrodynamicProvider = ({ children }) => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  },[loginData]);
 
   //Datos formulario HIDRODINAMICO
   const [datos, setDatos] = useState({
@@ -195,11 +199,11 @@ export const HydrodynamicProvider = ({ children }) => {
           SubmitMDP,
           handleMDP,
           datosMdp,
-          dat,
           setDatosMdp,
-          setDat,
           mdpCheck,
           setMdpCheck,
+          setloginData,
+          edit,setEdit
         }}
       >
         {children}

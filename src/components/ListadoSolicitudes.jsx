@@ -18,7 +18,7 @@ const ListadoSolicitudes = () => {
                 <td className="p-2 font-bold">{datos.tiempoEstimado}</td>
                 <td className="p-2 font-bold">{datos.requestStatus}</td>
                 <td className=" font-bold">{datos.emergencia}</td>
-                <button onClick={()=>setEdit(datos)} className='p-4 font-bold'>Editar</button> 
+                {/* <button onClick={()=>setEdit(datos)} className='p-4 font-bold'>Editar</button>  */}
               </tr>
             </tbody>
           </>

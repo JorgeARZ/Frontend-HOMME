@@ -1,7 +1,13 @@
 import useHydrodynamic from "../hooks/useHidrodinamyc";
+import {  useState } from "react";
+
 
 const ListadoSolicitudes = () => {
-  const { ViewDatos,setEdit } = useHydrodynamic();
+  const { ViewDatos,setEdit,setMdpCheck,mdpCheck } = useHydrodynamic();
+
+  console.log(mdpCheck)
+
+  
 
   const resultados = [];
 
@@ -13,6 +19,7 @@ const ListadoSolicitudes = () => {
           <>
             <tbody>
               <tr className="border-b text-center text-blue-950">
+                {/* <button type="button" className="p-2 font-bold">{datos._id}</button> */}
                 <td className="p-2 font-bold">{datos._id}</td>
                 <td className="p-2 font-bold">{datos.modelType}</td>
                 <td className="p-2 font-bold">{datos.tiempoEstimado}</td>

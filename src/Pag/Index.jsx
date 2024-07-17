@@ -23,12 +23,15 @@ const Index = () => {
           <ListadoSolicitudes />
         </div>
       </div>
+      <ShowRequest />
+      <ShowGrid />
+      <ShowBathy />
 
       {/* <div className="mt-24">
-        <ShowRequest />
+        
       </div>
-      <ShowGrid />
-      <ShowBathy /> */}
+      
+       */}
       {/* <Footer/>  */}
     </>
   );
